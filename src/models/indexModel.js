@@ -23,6 +23,7 @@ const food=require("./food");
                          ssl: {
                              require: true,
                          rejectUnauthorized: false,
+                         connectionString:process.env.DATABASE_URL
                          },
                      },
                  }
