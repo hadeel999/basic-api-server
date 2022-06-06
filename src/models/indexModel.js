@@ -5,7 +5,7 @@ const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' : proces
 const clothes=require("./clothes");
 const food=require("./food");
 
-let sequelizeOptions =
+/*let sequelizeOptions =
     process.env.NODE_ENV === "production"
         ? {
             dialect: 'postgres',
@@ -14,7 +14,19 @@ let sequelizeOptions =
                 ssl: true,
                 native: true
             }
-        } : {};
+        } : {};*/
+
+        let sequelizeOptions =
+            process.env.NODE_ENV === "production"
+                 ? {
+                     dialectOptions: {
+                         ssl: {
+                             require: true,
+                         rejectUnauthorized: false,
+                         },
+                     },
+                 }
+                 : {};
 
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 
