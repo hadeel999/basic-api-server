@@ -20,11 +20,7 @@ const food=require("./food");
             process.env.NODE_ENV === "production"
                  ? {
                      dialectOptions: {
-                         ssl: {
-                             require: true,
-                         rejectUnauthorized: false,
-                         connectionString:process.env.DATABASE_URL
-                         },
+                        
                      },
                  }
                  : {};
